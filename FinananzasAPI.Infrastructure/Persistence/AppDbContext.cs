@@ -1,0 +1,32 @@
+﻿using FinananzasAPI.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
+
+namespace FinananzasAPI.Infrastructure.Persistence
+{
+    public class AppDbContext : DbContext
+    {
+       public AppDbContext(DbContextOptions <AppDbContext> options) : base(options) { }
+
+        public DbSet<User> Users => Set<User>();
+        public DbSet<Category> Categories => Set<Category>();
+        public DbSet<Transaction> Transactions => Set<Transaction>(); 
+        public DbSet<Budget> Budgets => Set<Budget>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
+    }
+}

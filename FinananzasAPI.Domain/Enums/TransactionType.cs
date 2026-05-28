@@ -4,7 +4,9 @@ using System.Text;
 
 namespace FinananzasAPI.Domain.Enums
 {
-    internal class TransactionType
+    public enum TransactionType
     {
+        Income = 1,
+        Expanse = 2
     }
 }
