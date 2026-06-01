@@ -163,3 +163,5 @@ C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\obj\Debug\net10.0\refint
 C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\obj\Debug\net10.0\FinananzasAPI.API.pdb
 C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\obj\Debug\net10.0\FinananzasAPI.API.genruntimeconfig.cache
 C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\obj\Debug\net10.0\ref\FinananzasAPI.API.dll
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\bin\Debug\net10.0\BCrypt-Net-Next.dll
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
