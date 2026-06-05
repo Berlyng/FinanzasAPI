@@ -14,7 +14,7 @@ namespace FinananzasAPI.Application.DTOs.Transactions
 
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage ="El monto debe ser mayor a 0")]
-        public decimal amount { get; set; }
+        public decimal Amount { get; set; }
 
         [Required]
         public TransactionType Type { get; set; }

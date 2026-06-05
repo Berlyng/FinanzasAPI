@@ -1,4 +1,5 @@
-﻿using FinananzasAPI.Application.DTOs.Categories;
+﻿using Azure.Core;
+using FinananzasAPI.Application.DTOs.Categories;
 using FinananzasAPI.Application.DTOs.Transactions;
 using FinananzasAPI.Application.Interfaces;
 using FinananzasAPI.Domain.Entities;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace FinananzasAPI.Infrastructure.Services
@@ -20,14 +22,43 @@ namespace FinananzasAPI.Infrastructure.Services
             _db = db;
         }
 
-        public Task<TransactionResponse> CreateAsync(TransactionRequest request, Guid userId)
+        public async Task<TransactionResponse> CreateAsync(TransactionRequest request, Guid userId)
         {
-            throw new NotImplementedException();
+            var categoryExist = await _db.Categories
+                .AnyAsync(c => c.Id == request.CategoryId && c.UserId == userId);
+
+            if (!categoryExist)
+            {
+                throw new KeyNotFoundException("Categoria no encontrada");
+            }
+
+            var transaction = new Transaction
+            {
+                Description = request.Description,
+                Amount = request.Amount,
+                Type = request.Type,
+                Date = request.Date,
+                Notes = request.Notes,
+                CategoryId = request.CategoryId,
+                UserId = userId
+            };
+
+            _db.Transactions.Add(transaction);
+            await _db.SaveChangesAsync();
+
+            //Recargarmos la categoria para devolver el response completo
+            await _db.Entry(transaction).Reference(t => t.Category).LoadAsync();
+            return ToResponse(transaction);
         }
 
-        public Task DeleteAsync(Guid id, Guid userId)
+        public async Task DeleteAsync(Guid id, Guid userId)
         {
-            throw new NotImplementedException();
+            var transaction = await _db.Transactions
+                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId)
+                ?? throw new KeyNotFoundException("Transacion no encontrada");
+
+             _db.Transactions.Remove(transaction);
+            await _db.SaveChangesAsync();
         }
 
         public async Task<PageResponse<TransactionResponse>> GetAllAsync(Guid userId, TransactionFilters filters)
@@ -85,14 +116,42 @@ namespace FinananzasAPI.Infrastructure.Services
                
         }
 
-        public Task<TransactionResponse> GetByIdAsync(Guid id, Guid userId)
+        public async Task<TransactionResponse> GetByIdAsync(Guid id, Guid userId)
         {
-            throw new NotImplementedException();
+            var transaction = await _db.Transactions
+                .Include(t => t.Category)
+                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId)
+                ?? throw new KeyNotFoundException("Transaccion no encontrada");
+
+            return ToResponse(transaction);
         }
 
-        public Task<TransactionResponse> UpdateAsync(Guid id, TransactionRequest request, Guid userId)
+        public async Task<TransactionResponse> UpdateAsync(Guid id, TransactionRequest request, Guid userId)
         {
-            throw new NotImplementedException();
+            var transaction = await _db.Transactions
+                .Include(t => t.Category)
+                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId)
+                ?? throw new KeyNotFoundException("Transaccion no encontrada");
+
+            var categoryExist = await _db.Categories
+                .AnyAsync(c => c.Id == request.CategoryId && c.UserId == userId);
+
+            if (!categoryExist)
+            {
+                throw new KeyNotFoundException("Categoria no encontrada");
+            }
+
+            transaction.Description = request.Description;
+            transaction.Amount = request.Amount;
+            transaction.Type = request.Type;
+            transaction.Date = request.Date;
+            transaction.Notes = request.Notes;
+            transaction.CategoryId = request.CategoryId;
+            transaction.UpdatedAt = DateTime.UtcNow;
+
+            await _db.SaveChangesAsync();
+            await _db.Entry(transaction).Reference(t => t.Category).LoadAsync();
+            return ToResponse(transaction);
         }
 
 
