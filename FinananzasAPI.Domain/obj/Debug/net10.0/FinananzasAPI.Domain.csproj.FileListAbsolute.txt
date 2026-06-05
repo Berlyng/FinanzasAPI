@@ -1,0 +1,12 @@
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\bin\Debug\net10.0\FinananzasAPI.Domain.deps.json
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\bin\Debug\net10.0\FinananzasAPI.Domain.dll
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\bin\Debug\net10.0\FinananzasAPI.Domain.pdb
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.AssemblyInfoInputs.cache
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.AssemblyInfo.cs
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.csproj.CoreCompileInputs.cache
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.sourcelink.json
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.dll
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\refint\FinananzasAPI.Domain.dll
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\FinananzasAPI.Domain.pdb
+C:\Users\wilbe\source\repos\FinananzasAPI\FinananzasAPI.Domain\obj\Debug\net10.0\ref\FinananzasAPI.Domain.dll

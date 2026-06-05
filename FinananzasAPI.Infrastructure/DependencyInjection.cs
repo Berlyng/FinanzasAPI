@@ -1,0 +1,34 @@
+﻿using FinananzasAPI.Application.Infrastructure.Services;
+using FinananzasAPI.Application.Interfaces;
+using FinananzasAPI.Infrastructure.Persistence;
+using FinananzasAPI.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace FinananzasAPI.Infrastructure
+{
+    public static class DependencyInjection
+    {
+        public static IServiceCollection AddInfrastructure(
+        this IServiceCollection services,
+        IConfiguration configuration)
+        {
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("FinananzasAPI.Infrastructure")
+                )
+            );
+
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ITransactionService, TransactionService>();
+
+            return services;
+        }
+
+       
+    }
+}
