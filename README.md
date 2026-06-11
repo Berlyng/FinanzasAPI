@@ -60,6 +60,18 @@
 * **Parámetros (Query): userId={guid}&month=6&year=2026
 
 * **Respuesta Exitosa (200 OK):
+
+  ```bash
+    {
+   "success": true,
+   "data": {
+     "month": 6,
+     "year": 2026,
+     "totalIncome": 50000.00,
+     "totalExpense": 12450.00,
+     "transactionCount": 15,
+     "averageExpensePerDay": 415.00
+   }}
    
 
    
