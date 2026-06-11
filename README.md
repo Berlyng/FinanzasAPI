@@ -38,12 +38,12 @@
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/finanzas-api.git](https://github.com/tu-usuario/finanzas-api.git)
+   git clone [https://github.com/Berlyng/finanzasApi.git](https://github.com/Berlyng/finanzasApi.git)
    cd finanzas-api
 
 2. **Configurar la cadena de conexión:**
      ```bash
-     "ConnectionStrings": {DefaultConnection": "Server=TU_SERVIDOR;Database=FinanzasDb;Trusted_Connection=True;TrustServerCertificate=True;}
+     "ConnectionStrings": {DefaultConnection": "Server=TU_SERVIDOR;Database=FinananzasDb;Trusted_Connection=True;TrustServerCertificate=True;}
 3. ** Ejecutar Migraciones:**
    ```bash
    dotnet ef database update --project FinananzasAPI.Infrastructure --startup-project FinananzasAPI.WebApi
