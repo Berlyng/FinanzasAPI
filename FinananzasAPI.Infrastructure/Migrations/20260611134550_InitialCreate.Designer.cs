@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinananzasAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260601215500_AddRefreshTokenToUser")]
-    partial class AddRefreshTokenToUser
+    [Migration("20260611134550_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,7 +173,7 @@ namespace FinananzasAPI.Infrastructure.Migrations
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RefreshTokenExpiry")
+                    b.Property<DateTime?>("RefreshTokenExpiry")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("UpdatedAt")

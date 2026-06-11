@@ -25,6 +25,10 @@ namespace FinananzasAPI.Infrastructure
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<IBudgetService, BudgetService>();
+            services.AddScoped<IReportService, ReportService>();
+
+
 
             return services;
         }

@@ -27,9 +27,6 @@ namespace FinananzasAPI.Infrastructure.Persistence.Configurations
             builder.Property(u => u.PasswordHash)
                 .IsRequired();
 
-            builder.Property(u => u.RefreshTokenExpiry)
-                .IsRequired();
-
             builder.HasMany(u => u.Transactions)
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId)
