@@ -24,6 +24,7 @@
 * **ORM:** Entity Framework Core
 * **Base de Datos:** SQL Server
 * **Pruebas y Documentación:** Postman
+* **Durante el ciclo de desarrollo se utilizaron herramientas de asistencia de Inteligencia Artificial (Gemini, Chatgpt y Cloud) como soporte para la optimización de consultas complejas de EF Core, revisión de buenas prácticas de código limpio y generación de documentación.
 
 ---
 
