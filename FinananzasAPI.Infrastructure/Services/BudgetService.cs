@@ -67,7 +67,7 @@ namespace FinananzasAPI.Infrastructure.Services
 
         public async Task<List<BudgetResponse>> GetAllAsync(Guid userId, int? month, int? year)
         {
-            var now = DateTime.Now;
+            var now = DateTime.UtcNow;
             var query = _db.Budgets
                 .Include(b => b.Category)
                 .Where(b => b.UserId == userId

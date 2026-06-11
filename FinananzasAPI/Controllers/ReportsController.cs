@@ -1,4 +1,5 @@
 ﻿using FinananzasAPI.Application.DTOs.Reports;
+using FinananzasAPI.Application.Interfaces;
 using FinananzasAPI.Domain.Commons;
 using FinananzasAPI.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -12,11 +13,11 @@ namespace FinananzasAPI.API.Controllers
     [Authorize]
     public class ReportsController : Controller
     {
-        private readonly ReportService _reportService;
+        private readonly IReportService _reportService;
 
         private Guid userId => Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-        public ReportsController(ReportService reportService) => _reportService = reportService;
+        public ReportsController(IReportService reportService) => _reportService = reportService;
 
         [HttpGet("summary")]
         public async Task<IActionResult> GetSummary([FromQuery] int? month,  [FromQuery] int? year)

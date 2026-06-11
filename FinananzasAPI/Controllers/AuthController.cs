@@ -39,8 +39,8 @@ namespace FinananzasAPI.API.Controllers
         {
             try
             {
-                var respones = await _authService.LoginAsync(request);
-                return Ok(request);
+                var responses = await _authService.LoginAsync(request);
+                return Ok(responses);
             }
             catch (UnauthorizedAccessException ex)
             {

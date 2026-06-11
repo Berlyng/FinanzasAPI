@@ -34,7 +34,7 @@ namespace FinananzasAPI.API.Controllers
         [HttpGet("{id:guid}/status")]
         public async Task<IActionResult> GetStatus(Guid id)
         {
-            var status = await _budgetService.GetStatusAsync(userId, id);
+            var status = await _budgetService.GetStatusAsync(id, userId);
             return Ok(ApiResponse<BudgetStatusResponse>.Ok(status));
         }
 
