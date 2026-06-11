@@ -73,5 +73,6 @@
      "averageExpensePerDay": 415.00
    }}
    
-
+### ✒️ Autor
+* **Berlyng Manuel Yena García - Desarrollo Backend y Lógica de Negocio
    
